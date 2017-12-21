@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 
@@ -70,14 +71,14 @@ public class MenuFoodFragment extends Fragment { //1
 
             JSONArray jsonArray = new JSONArray(jsonString);
 
-            String[] idStrings = new String[jsonArray.length()];
-            String[] categoryStrings = new String[jsonArray.length()];
+            final String[] idStrings = new String[jsonArray.length()];
+            final String[] categoryStrings = new String[jsonArray.length()];
             String[] barcodeStrings = new String[jsonArray.length()];
             String[] qrcodeStrings = new String[jsonArray.length()];
-            String[] nameStrings = new String[jsonArray.length()];
-            String[] piceStrings = new String[jsonArray.length()];
-            String[] detailStrings = new String[jsonArray.length()];
-            String[] imagePathStrings = new String[jsonArray.length()];
+            final String[] nameStrings = new String[jsonArray.length()];
+            final String[] piceStrings = new String[jsonArray.length()];
+            final String[] detailStrings = new String[jsonArray.length()];
+            final String[] imagePathStrings = new String[jsonArray.length()];
 
             for (int i = 0; i < jsonArray.length(); i += 1) {
 
@@ -98,6 +99,20 @@ public class MenuFoodFragment extends Fragment { //1
             FoodAdapter foodAdapter = new FoodAdapter(getActivity(),
                     imagePathStrings, nameStrings, piceStrings);
             listView.setAdapter(foodAdapter);
+
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.contentMainFragment, DetailFragment.detailInstanc(
+                                    idStrings[i], nameStrings[i], categoryStrings[i],
+                                    imagePathStrings[i], piceStrings[i], detailStrings[i]
+                            ))
+                            .addToBackStack(null)
+                            .commit();
+                }
+            });
 
         } catch (Exception e) {
             e.printStackTrace();

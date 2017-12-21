@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--Tool Bar-->
+    <include
+        layout="@layout/my_toolbar"
+        android:id="@+id/toolbarDetailFragment" />
+
+
+    <!--Content-->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:background="#82FFFFFF"
+                android:padding="15dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <!--Category-->
+                <TextView
+                    android:id="@+id/category"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/h1"
+                    android:text="Category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <!--Image Food-->
+                <ImageView
+                    android:id="@+id/imageFood"
+                    android:layout_margin="15dp"
+                    android:scaleType="centerInside"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/logo" />
+                <!--Price-->
+                <TextView
+                    android:id="@+id/txtprice"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/h1"
+                    android:text="Pice = 123 THB."
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <!--Detail-->
+                <TextView
+                    android:id="@+id/txtDetail"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/h1"
+                    android:text="Detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+
+
+        </ScrollView>
+
+
+
+
+</LinearLayout>
